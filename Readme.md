@@ -7,6 +7,8 @@ Run:
 
 `npm install`
 
+`php artisan key:generate` generate  
+
 `npm run watch` to create to compile js/css documents
 
 `php artisan migrate` to create the database tables
