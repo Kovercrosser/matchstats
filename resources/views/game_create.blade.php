@@ -109,16 +109,16 @@
 
                       <div class="col-md-6 col-12">
                         <div class="form-group">
-                          <label for="pass_accuracy_a">Pass Accuracy</label>
-                          <input type="number" id="pass_accuracy_a" name="pass_accuracy_a" class="form-control"
+                          <label for="shot_accuracy_a">Shot Accuracy</label>
+                          <input type="number" id="shot_accuracy_a" name="shot_accuracy_a" class="form-control"
                               value="0" required>
                         </div>
                       </div>
 
                       <div class="col-md-6 col-12">
                         <div class="form-group">
-                          <label for="shot_accuracy_a">Shot Accuracy</label>
-                          <input type="number" id="shot_accuracy_a" name="shot_accuracy_a" class="form-control"
+                          <label for="pass_accuracy_a">Pass Accuracy</label>
+                          <input type="number" id="pass_accuracy_a" name="pass_accuracy_a" class="form-control"
                               value="0" required>
                         </div>
                       </div>
@@ -232,16 +232,16 @@
 
                       <div class="col-md-6 col-12">
                         <div class="form-group">
-                          <label for="pass_accuracy_b">Pass Accuracy</label>
-                          <input type="number" id="pass_accuracy_b" name="pass_accuracy_b" class="form-control"
+                          <label for="shot_accuracy_b">Shot Accuracy</label>
+                          <input type="number" id="shot_accuracy_b" name="shot_accuracy_b" class="form-control"
                               value="0" required>
                         </div>
                       </div>
 
                       <div class="col-md-6 col-12">
                         <div class="form-group">
-                          <label for="shot_accuracy_b">Shot Accuracy</label>
-                          <input type="number" id="shot_accuracy_b" name="shot_accuracy_b" class="form-control"
+                          <label for="pass_accuracy_b">Pass Accuracy</label>
+                          <input type="number" id="pass_accuracy_b" name="pass_accuracy_b" class="form-control"
                               value="0" required>
                         </div>
                       </div>
