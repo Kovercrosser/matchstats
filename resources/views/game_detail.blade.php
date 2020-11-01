@@ -11,6 +11,11 @@
                 </div>
                 <div class="card-body">
                   <div class="row text-center">
+                    <!-- Team -->
+                    <div class="col-4">{{ $game->statistics_player_a[0]->team }}</div>
+                    <div class="col-4">Team</div>
+                    <div class="col-4">{{ $game->statistics_player_b[0]->team }}</div>
+
                     <!-- Goals -->
                     <div class="col-4">{{ $game->statistics_player_a[0]->goals }}</div>
                     <div class="col-4">Goals</div>

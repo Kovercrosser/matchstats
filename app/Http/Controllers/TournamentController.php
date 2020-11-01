@@ -20,11 +20,13 @@ class TournamentController extends Controller
     {
       $tournament = Tournament::findOrFail($id);
       $games = Game::all()->where('tournament_id', $id)->sortByDesc('created_at');
-
+      $user = auth()->user();
+      
       return view('tournament_detail',
         [
           'tournament' => $tournament,
           'games' => $games,
+          'user' => $user,
         ]);
     }
 

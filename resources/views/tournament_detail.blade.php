@@ -12,8 +12,10 @@
                     Spielversion: {{ $tournament->game_version }}<br>
                     Admin: {{ $tournament->admin->name }}
                   </p>
+                  @if ($user->id == $tournament->admin->id)
                   <a href="/home/{{ $tournament->id }}/create"
                     class="btn btn-primary">add Game</a>
+                  @endif
                 </div>
             </div>
 
