@@ -9,7 +9,7 @@ Run:
 
 `php artisan key:generate` generate  
 
-`npm run watch` to create to compile js/css documents
+--> Only for Development `npm run watch` to create to compile js/css documents
 
 `php artisan migrate` to create the database tables
 
