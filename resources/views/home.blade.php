@@ -5,16 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">Tournament Overview</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                  <a href="/home/create" class="btn btn-primary">Create Tournament</a>
                 </div>
             </div>
 
@@ -23,7 +17,7 @@
               <div class="card-header">{{ $tournament->name }}</div>
               <div class="card-body">
                 <p>Text & Infos</p>
-                <a class="btn btn-primary" href="/home/{{ $tournament->id }}" role="button">Link</a>
+                <a class="btn btn-primary" href="/home/{{ $tournament->id }}" role="button">more...</a>
               </div>
             </div>
             @endforeach

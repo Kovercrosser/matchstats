@@ -27,4 +27,28 @@ class TournamentController extends Controller
           'games' => $games,
         ]);
     }
+
+    public function create()
+    {
+        return view('tournament_create');
+    }
+
+    public function add()
+    {
+        $user = auth()->user();
+        request()->validate([
+          'type' => 'required',
+        ]);
+
+        $tournament = Tournament::create([
+          'admin_id' => $user->id,
+          'type'   => request('type'),
+          'name'  => request('name'),
+          'game_version' => request('game_version'),
+          'halftime_time' => request('halftime_time'),
+        ]);
+        $tournament->save();
+
+        return redirect('/home');
+    }
 }

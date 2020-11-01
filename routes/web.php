@@ -19,4 +19,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\TournamentController@index');
+Route::get('/home/create', 'App\Http\Controllers\TournamentController@create');
+Route::post('/home/create', 'App\Http\Controllers\TournamentController@add');
+
 Route::get('/home/{id}', 'App\Http\Controllers\TournamentController@detail')->where('id', '[0-9]+');
+Route::get('/home/{id}/create', 'App\Http\Controllers\TournamentController@create')->where('id', '[0-9]+');
