@@ -5,8 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Neues Tunier</div>
-
+                <div class="card-header">New Tournament</div>
                 <div class="card-body">
 
                   <form method="POST" action="/home/create">
@@ -22,10 +21,11 @@
                       <div class="col-12">
                         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Tunierart</label>
                           <select name="type" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                            <option value="Liga" selected>Liga (jeder gegen jeden)</option>
-                            <option value="Tunier">Tunier (Gruppenphase)</option>
-                            <option value="KO-Tunier">KO-Tunier</option>
-                            <option value="Team-vs-Team">Team vs. Team</option>
+                            <option value="liga" selected>Liga (jeder gegen jeden)</option>
+                            <option value="tournament">Tunier (Gruppenphase)</option>
+                            <option value="ko-tournament">KO-Tournament</option>
+                            <option value="team-vs-team">Team vs. Team</option>
+                            <option value="free">Free</option>
                           </select>
                       </div>
                       <div class="col-md-6 col-12">

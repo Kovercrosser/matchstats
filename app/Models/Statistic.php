@@ -17,4 +17,18 @@ class Statistic extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function gameend($game)
+    {
+        switch ($game){
+          case 'normal':
+            return 'Normal (90min)';
+          case 'overtime':
+            return 'Overtime (120min)';
+          case 'penalty':
+            return 'Penalty Shootout';
+          case 'goldengoal':
+            return 'Goalden Goal';
+        }
+    }
 }

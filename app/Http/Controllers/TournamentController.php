@@ -19,7 +19,7 @@ class TournamentController extends Controller
     public function detail($id)
     {
       $tournament = Tournament::findOrFail($id);
-      $games = Game::all()->where('tournament_id', $id);
+      $games = Game::all()->where('tournament_id', $id)->sortByDesc('created_at');
 
       return view('tournament_detail',
         [

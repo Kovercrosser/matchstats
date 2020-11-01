@@ -20,6 +20,14 @@ class GameController extends Controller
           ->with('tournament', $tournament);
     }
 
+    public function detail($id)
+    {
+        $game = Game::findOrFail($id);
+
+        return view('game_detail')
+          ->with('game', $game);
+    }
+
     public function add($id)
     {
         $statistic_a = Statistic::create([
@@ -35,7 +43,7 @@ class GameController extends Controller
           'corners' => request('corners_a'),
           'yellow_cards' => request('yellow_cards_a'),
           'red_cards' => request('red_cards_a'),
-          'game_end' => request('game_end_a'),
+          'game_end' => request('game_end'),
           'pass_accuracy' => request('pass_accuracy_a'),
           'shot_accuracy' => request('shot_accuracy_a'),
         ]);
@@ -54,7 +62,7 @@ class GameController extends Controller
           'corners' => request('corners_b'),
           'yellow_cards' => request('yellow_cards_b'),
           'red_cards' => request('red_cards_b'),
-          'game_end' => request('game_end_b'),
+          'game_end' => request('game_end'),
           'pass_accuracy' => request('pass_accuracy_b'),
           'shot_accuracy' => request('shot_accuracy_b'),
         ]);
@@ -66,7 +74,6 @@ class GameController extends Controller
           'tournament_id' => $id,
         ]);
         $game->save();
-
 
         return redirect('/home/'.$id);
     }

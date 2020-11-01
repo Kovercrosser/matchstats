@@ -20,13 +20,15 @@
             @foreach ($games as $game)
             <div class="card my-2">
                 <div class="card-body">
-                  <p>
+                  <p class="float-left">
                     {{ $game->statistics_player_a[0]->user->name }} :
                     {{ $game->statistics_player_b[0]->user->name }}
                     <br>
                     {{ $game->statistics_player_a[0]->goals }} :
                     {{ $game->statistics_player_b[0]->goals }}
                   </p>
+                  <a href="/game/{{ $game->id }}"
+                    class="btn btn-primary float-right mt-3">more...</a>
                 </div>
             </div>
             @endforeach
