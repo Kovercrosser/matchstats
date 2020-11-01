@@ -23,7 +23,7 @@
               <div class="card-header">{{ $tournament->name }}</div>
               <div class="card-body">
                 <p>Text & Infos</p>
-                
+                <a class="btn btn-primary" href="/home/{{ $tournament->id }}" role="button">Link</a>
               </div>
             </div>
             @endforeach
