@@ -2,20 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Statistic extends Model
 {
-    use HasFactory;
+    protected $guarded = [];
 
     public function game()
     {
-      return $this->hasOne('App\Models\Game');
+      return $this->belongsTo('App\Models\Game');
     }
 
     public function user()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->belongsTo('App\Models\User');
     }
 }

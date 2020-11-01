@@ -17,6 +17,17 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+
+            @foreach ($tournaments as $tournament)
+            <div class="card my-2">
+              <div class="card-header">{{ $tournament->name }}</div>
+              <div class="card-body">
+                <p>Text & Infos</p>
+                
+              </div>
+            </div>
+            @endforeach
+
         </div>
     </div>
 </div>
