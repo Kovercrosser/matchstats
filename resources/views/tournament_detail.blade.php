@@ -8,7 +8,7 @@
                 <div class="card-header">{{ $tournament->name }}</div>
                 <div class="card-body">
                   <p>
-                    Spieltyp: {{ $tournament->type }}<br>
+                    Spieltyp: {{ $tournament->turnamentType($tournament->type) }}<br>
                     Spielversion: {{ $tournament->game_version }}<br>
                     Admin: {{ $tournament->admin->name }}
                   </p>

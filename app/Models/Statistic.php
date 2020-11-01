@@ -20,15 +20,16 @@ class Statistic extends Model
 
     public function gameend($game)
     {
-        switch ($game){
-          case 'normal':
-            return 'Normal (90min)';
-          case 'overtime':
-            return 'Overtime (120min)';
-          case 'penalty':
-            return 'Penalty Shootout';
-          case 'goldengoal':
-            return 'Goalden Goal';
+        switch ($game)
+        {
+            case 'normal':
+                return 'Normal (90min)';
+            case 'overtime':
+                return 'Overtime (120min)';
+            case 'penalty':
+                return 'Penalty Shootout';
+            case 'goldengoal':
+                return 'Goalden Goal';
         }
     }
 }

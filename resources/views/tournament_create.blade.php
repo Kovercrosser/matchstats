@@ -42,7 +42,7 @@
                         <div class="form-group">
                           <label for="halftime_time">Halbzeitlänge</label>
                           <input type="number" id="halftime_time" name="halftime_time" class="form-control"
-                              placeholder="6" required>
+                              value="6" required>
                         </div>
                       </div>
 

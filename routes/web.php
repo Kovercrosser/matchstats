@@ -27,3 +27,5 @@ Route::get('/home/{id}/create', 'App\Http\Controllers\GameController@create')->w
 Route::post('/home/{id}/create', 'App\Http\Controllers\GameController@add')->where('id', '[0-9]+');
 
 Route::get('/game/{id}', 'App\Http\Controllers\GameController@detail')->where('id', '[0-9]+');
+
+Route::get('/user/{id}', 'App\Http\Controllers\TournamentController@user_statistics')->where('id', '[0-9]+');

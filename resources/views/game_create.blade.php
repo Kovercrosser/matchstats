@@ -77,22 +77,6 @@
 
                       <div class="col-md-6 col-12">
                         <div class="form-group">
-                          <label for="offsides_a">Offsides</label>
-                          <input type="number" id="offsides_a" name="offsides_a" class="form-control"
-                              value="0" required>
-                        </div>
-                      </div>
-
-                      <div class="col-md-6 col-12">
-                        <div class="form-group">
-                          <label for="corners_a">Corners</label>
-                          <input type="number" id="corners_a" name="corners_a" class="form-control"
-                              value="0" required>
-                        </div>
-                      </div>
-
-                      <div class="col-md-6 col-12">
-                        <div class="form-group">
                           <label for="yellow_cards_a">Yellow Cards</label>
                           <input type="number" id="yellow_cards_a" name="yellow_cards_a" class="form-control"
                               value="0" required>
@@ -103,6 +87,22 @@
                         <div class="form-group">
                           <label for="red_cards_a">Red Cards</label>
                           <input type="number" id="red_cards_a" name="red_cards_a" class="form-control"
+                              value="0" required>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 col-12">
+                        <div class="form-group">
+                          <label for="offsides_a">Offsides</label>
+                          <input type="number" id="offsides_a" name="offsides_a" class="form-control"
+                              value="0" required>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 col-12">
+                        <div class="form-group">
+                          <label for="corners_a">Corners</label>
+                          <input type="number" id="corners_a" name="corners_a" class="form-control"
                               value="0" required>
                         </div>
                       </div>
@@ -200,22 +200,6 @@
 
                       <div class="col-md-6 col-12">
                         <div class="form-group">
-                          <label for="offsides_b">Offsides</label>
-                          <input type="number" id="offsides_b" name="offsides_b" class="form-control"
-                              value="0" required>
-                        </div>
-                      </div>
-
-                      <div class="col-md-6 col-12">
-                        <div class="form-group">
-                          <label for="corners_b">Corners</label>
-                          <input type="number" id="corners_b" name="corners_b" class="form-control"
-                              value="0" required>
-                        </div>
-                      </div>
-
-                      <div class="col-md-6 col-12">
-                        <div class="form-group">
                           <label for="yellow_cards_b">Yellow Cards</label>
                           <input type="number" id="yellow_cards_b" name="yellow_cards_b" class="form-control"
                               value="0" required>
@@ -226,6 +210,22 @@
                         <div class="form-group">
                           <label for="red_cards_b">Red Cards</label>
                           <input type="number" id="red_cards_b" name="red_cards_b" class="form-control"
+                              value="0" required>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 col-12">
+                        <div class="form-group">
+                          <label for="offsides_b">Offsides</label>
+                          <input type="number" id="offsides_b" name="offsides_b" class="form-control"
+                              value="0" required>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 col-12">
+                        <div class="form-group">
+                          <label for="corners_b">Corners</label>
+                          <input type="number" id="corners_b" name="corners_b" class="form-control"
                               value="0" required>
                         </div>
                       </div>

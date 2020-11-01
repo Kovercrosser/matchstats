@@ -21,7 +21,7 @@
               <div class="card-header">{{ $tournament->name }}</div>
               <div class="card-body">
                 <p class="float-left">
-                  Type: {{ $tournament->type }}<br> Admin: {{ $tournament->admin->name }}
+                  Type: {{ $tournament->turnamentType($tournament->type) }}<br> Admin: {{ $tournament->admin->name }}
                 </p>
                 <a class="btn btn-primary mt-4 float-right" href="/home/{{ $tournament->id }}" role="button">more...</a>
               </div>
