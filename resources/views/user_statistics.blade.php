@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card my-2">
-              <div class="card-header">{{ Auth::user()->name }}</div>
+              <div class="card-header">{{ $user->name }}</div>
             </div>
         </div>
         <div class="col-md-6">

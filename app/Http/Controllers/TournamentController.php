@@ -84,17 +84,30 @@ class TournamentController extends Controller
         }
 
         // Averrage
-        $user_goals_av = $user_goals_count / $user_games_count;
-        $user_shot_av = $user_shot_count / $user_games_count;
-        $user_shot_on_target_av = $user_shot_on_target_count / $user_games_count;
-        $user_tackles_av = $user_tackles_count / $user_games_count;
-        $user_fouls_av = $user_fouls_count / $user_games_count;
-        $user_offsides_av = $user_offsides_count / $user_games_count;
-        $user_corners_av = $user_corners_count / $user_games_count;
-        $user_yellow_cards_av = $user_yellow_cards_count / $user_games_count;
-        $user_red_cards_av = $user_red_cards_count / $user_games_count;
+        if ($user_games_count > 0){
+          $user_goals_av = $user_goals_count / $user_games_count;
+          $user_shot_av = $user_shot_count / $user_games_count;
+          $user_shot_on_target_av = $user_shot_on_target_count / $user_games_count;
+          $user_tackles_av = $user_tackles_count / $user_games_count;
+          $user_fouls_av = $user_fouls_count / $user_games_count;
+          $user_offsides_av = $user_offsides_count / $user_games_count;
+          $user_corners_av = $user_corners_count / $user_games_count;
+          $user_yellow_cards_av = $user_yellow_cards_count / $user_games_count;
+          $user_red_cards_av = $user_red_cards_count / $user_games_count;
+        } else {
+          $user_goals_av = 0;
+          $user_shot_av = 0;
+          $user_shot_on_target_av = 0;
+          $user_tackles_av = 0;
+          $user_fouls_av = 0;
+          $user_offsides_av = 0;
+          $user_corners_av = 0;
+          $user_yellow_cards_av = 0;
+          $user_red_cards_av = 0;
+        }
 
         return view('user_statistics')
+          ->with('user', $user)
           ->with('user_games_count', $user_games_count)
           ->with('user_goals_count', $user_goals_count)
           ->with('user_shot_count', $user_shot_count)
