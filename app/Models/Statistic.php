@@ -10,7 +10,7 @@ class Statistic extends Model
 
     public function game()
     {
-      return $this->belongsTo('App\Models\Game');
+      return $this->belongsTo('App\Models\Game', 'user_id', 'id');
     }
 
     public function user()

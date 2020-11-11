@@ -16,6 +16,7 @@
                 <div class="card-body">
                     Spiele: {{ $user_games_count }}<br>
                     Tore: {{ $user_goals_count }}<br>
+                    Gegentore {{ $user_shotout_count }}<br>
                     Schüsse: {{ $user_shot_count }}<br>
                     Schüsse aufs Tor: {{ $user_shot_on_target_count }}<br>
                     Zweikämpfe: {{ $user_tackles_count }}<br>
