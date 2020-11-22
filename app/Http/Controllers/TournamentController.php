@@ -116,7 +116,7 @@ class TournamentController extends Controller
             }
         }
 
-        if ($result["user_games_won"] + $result["user_games_lost"] > 0 &&  $result["user_goals_count"] + $result["user_shotout_count"] > 0){
+        if ($user_games_won + $user_games_lost > 0 &&  $user_goals_count + $user_shotout_count > 0){
           $user_assesment =
           (((((($user_games_won - $user_games_lost) / ($user_games_won + $user_games_lost)) / 2) +
           ((($user_goals_count - $user_shotout_count) / ($user_goals_count + $user_shotout_count)) / 2))
