@@ -116,6 +116,9 @@ class StatisticsController extends Controller
           $user5[$i] = $this->get_user_statistics($stringDate, 90, $request->input('user5'));
       }
 
+      $user1["name"] = User::findOrFail($request->input('user1'))->name;
+      $user2["name"] = User::findOrFail($request->input('user2'))->name;
+
       return view('user_statistics_compare')
         ->with('user1', $user1)
         ->with('user2', $user2);

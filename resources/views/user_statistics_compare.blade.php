@@ -12,19 +12,23 @@
                 datasets: [{
                     data: [
                       @foreach ($user1 as $data)
-                        {{ $data["user_assesment"] }},
+                        @if (isset($data["user_assesment"]))
+                          {{ $data["user_assesment"] }},
+                        @endif
                       @endforeach
                     ],
-                    label: "User 1",
+                    label: "{{ $user1["name"] }}",
                     borderColor: "#3e95cd",
                     fill: false
                   }, {
                     data: [
                       @foreach ($user2 as $data)
-                        {{ $data["user_assesment"] }},
+                        @if (isset($data["user_assesment"]))
+                          {{ $data["user_assesment"] }},
+                        @endif
                       @endforeach
                     ],
-                    label: "User 2",
+                    label: "{{ $user2["name"] }}",
                     borderColor: "#1e19dc",
                     fill: false
                   },
@@ -33,7 +37,6 @@
               options: {
                 title: {
                   display: true,
-                  text: 'World population per region (in millions)',
                 },
                 maintainAspectRatio: false,
               }
