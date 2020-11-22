@@ -116,10 +116,14 @@ class TournamentController extends Controller
             }
         }
 
-        $user_assesment =
-        (((((($user_games_won - $user_games_lost) / ($user_games_won + $user_games_lost)) / 2) +
-        ((($user_goals_count - $user_shotout_count) / ($user_goals_count + $user_shotout_count)) / 2))
-        * 100) + 100 ) / 2;
+        if ($result["user_games_won"] + $result["user_games_lost"] > 0 &&  $result["user_goals_count"] + $result["user_shotout_count"] > 0){
+          $user_assesment =
+          (((((($user_games_won - $user_games_lost) / ($user_games_won + $user_games_lost)) / 2) +
+          ((($user_goals_count - $user_shotout_count) / ($user_goals_count + $user_shotout_count)) / 2))
+          * 100) + 100 ) / 2;
+        } else {
+          $user_assesment = 0;
+        }
 
         // Averrage
         if ($user_games_count > 0){

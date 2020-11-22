@@ -20,7 +20,7 @@ class StatisticsController extends Controller
       $sinceDate->format("Y-m-d");
       $toDate->format("Y-m-d");
 
-      $user = User::findOrFail($id);
+      $user = User::find($id);
       // Alltime
       $result = array(
         "user_goals_count" => 0,
@@ -37,10 +37,11 @@ class StatisticsController extends Controller
         "user_games_lost" => 0,
       );
 
-      foreach ($user->statistics->where('created_at', '>=', $sinceDate)->where('created_at', '<', $toDate) as $data)
+      $all_statistics = $user->statistics->where('created_at', '>=', $sinceDate)->where('created_at', '<', $toDate);
+
+      foreach ($all_statistics as $data)
       {
-          $result["user_goals_count"] += $data->goals;
-          $result["user_shot_count"] += $data->shots;
+          /*
           $result["user_shot_on_target_count"] += $data->shots_on_target;
           $result["user_tackles_count"] += $data->tackles;
           $result["user_fouls_count"] += $data->fouls;
@@ -48,9 +49,10 @@ class StatisticsController extends Controller
           $result["user_corners_count"] += $data->corners;
           $result["user_yellow_cards_count"] += $data->yellow_cards;
           $result["user_red_cards_count"] += $data->red_cards;
+          */
 
-          // Get all Shotout Goals
-
+          $result["user_goals_count"] += $data->goals;
+          $result["user_shot_count"] += $data->shots;
           if ($data->game->statistics_player_a[0]->user_id != $user->id)
           {
               $result["user_shotout_count"] += $data->game->statistics_player_a[0]->goals;
@@ -99,9 +101,9 @@ class StatisticsController extends Controller
       $user1 = array();
       $timespan = 0;
 
-      for ($i = 0; $i < $days; $i++){
+      for ($i = 0; $i <= $days; $i++){
         $sinceDate = new DateTime(); // For today/now, don't pass an arg.
-        $timespan = $days - $i - 1;
+        $timespan = $days - $i;
         date_sub($sinceDate, new DateInterval("P".$timespan."D"));
         $stringDate = $sinceDate->format("Y-m-d");
 
