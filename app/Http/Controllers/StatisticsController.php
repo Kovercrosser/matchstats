@@ -94,6 +94,7 @@ class StatisticsController extends Controller
 
     public function index(Request $request)
     {
+      $users = User::all();
       $days = 30;
       $user1 = array();
       $timespan = 0;
@@ -116,11 +117,20 @@ class StatisticsController extends Controller
           $user5[$i] = $this->get_user_statistics($stringDate, 90, $request->input('user5'));
       }
 
-      $user1["name"] = User::findOrFail($request->input('user1'))->name;
-      $user2["name"] = User::findOrFail($request->input('user2'))->name;
+      if ($request->input('user1'))
+        $user1["name"] = User::find($request->input('user1'))->name;
+      else {
+        $user1 = array();
+      }
+      if ($request->input('user1'))
+        $user2["name"] = User::find($request->input('user2'))->name;
+      else
+        $user2 = array();
+
 
       return view('user_statistics_compare')
         ->with('user1', $user1)
-        ->with('user2', $user2);
+        ->with('user2', $user2)
+        ->with('users', $users);
     }
 }
