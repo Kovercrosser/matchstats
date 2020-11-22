@@ -105,32 +105,58 @@ class StatisticsController extends Controller
         date_sub($sinceDate, new DateInterval("P".$timespan."D"));
         $stringDate = $sinceDate->format("Y-m-d");
 
-        if ($request->input('user1'))
+        if ($request->has('user1') && $request->input('user1') != "0")
           $user1[$i] = $this->get_user_statistics($stringDate, 90, $request->input('user1'));
-        if ($request->input('user2'))
+        if ($request->has('user2') && $request->input('user2') != "0")
           $user2[$i] = $this->get_user_statistics($stringDate, 90, $request->input('user2'));
-        if ($request->input('user3'))
+        if ($request->has('user3') && $request->input('user3') != "0")
           $user3[$i] = $this->get_user_statistics($stringDate, 90, $request->input('user3'));
-        if ($request->input('user4'))
+        if ($request->has('user4') && $request->input('user4') != "0")
           $user4[$i] = $this->get_user_statistics($stringDate, 90, $request->input('user4'));
-        if ($request->input('user5'))
+        if ($request->has('user5') && $request->input('user5') != "0")
           $user5[$i] = $this->get_user_statistics($stringDate, 90, $request->input('user5'));
+        if ($request->has('user6') && $request->input('user6') != "0")
+          $user6[$i] = $this->get_user_statistics($stringDate, 90, $request->input('user6'));
       }
 
-      if ($request->input('user1'))
+      if ($request->has('user1') && $request->input('user1') != "0")
         $user1["name"] = User::find($request->input('user1'))->name;
-      else {
+      else
         $user1 = array();
-      }
-      if ($request->input('user1'))
+
+      if ($request->has('user2') && $request->input('user2') != "0")
         $user2["name"] = User::find($request->input('user2'))->name;
       else
         $user2 = array();
+
+      if ($request->has('user3') && $request->input('user3') != 0)
+        $user3["name"] = User::find($request->input('user3'))->name;
+      else
+        $user3 = array();
+
+      if ($request->has('user4') && $request->input('user4') != "0")
+        $user4["name"] = User::find($request->input('user4'))->name;
+      else
+        $user4 = array();
+
+      if ($request->has('user5') && $request->input('user5') != "0")
+        $user5["name"] = User::find($request->input('user5'))->name;
+      else
+        $user5 = array();
+
+      if ($request->has('user6') && $request->input('user6') != "0")
+        $user6["name"] = User::find($request->input('user6'))->name;
+      else
+        $user6 = array();
 
 
       return view('user_statistics_compare')
         ->with('user1', $user1)
         ->with('user2', $user2)
+        ->with('user3', $user3)
+        ->with('user4', $user4)
+        ->with('user5', $user5)
+        ->with('user6', $user6)
         ->with('users', $users);
     }
 }
