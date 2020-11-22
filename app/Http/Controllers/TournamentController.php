@@ -61,6 +61,7 @@ class TournamentController extends Controller
         // Alltime
         $user_games_count = $user->statistics->count();
         $user_goals_count = 0;
+        $user_shotout_count = 0;
         $user_shot_count = 0;
         $user_shot_on_target_count = 0;
         $user_tackles_count = 0;
@@ -69,6 +70,8 @@ class TournamentController extends Controller
         $user_corners_count = 0;
         $user_yellow_cards_count = 0;
         $user_red_cards_count = 0;
+        $user_games_won = 0;
+        $user_games_lost = 0;
 
         foreach ($user->statistics as $data)
         {
@@ -81,11 +84,47 @@ class TournamentController extends Controller
             $user_corners_count += $data->corners;
             $user_yellow_cards_count += $data->yellow_cards;
             $user_red_cards_count += $data->red_cards;
+
+            // Get all Shotout Goals
+
+
+            if ($data->game->statistics_player_a[0]->user_id != $user->id)
+            {
+                $user_shotout_count += $data->game->statistics_player_a[0]->goals;
+
+                if ($data->game->statistics_player_a[0]->goals > $data->game->statistics_player_b[0]->goals)
+                {
+                    $user_games_lost += 1;
+                }
+                elseif ($data->game->statistics_player_a[0]->goals != $data->game->statistics_player_b[0]->goals)
+                {
+                    $user_games_won += 1;
+                }
+            }
+
+            if ($data->game->statistics_player_b[0]->user_id != $user->id) {
+                $user_shotout_count += $data->game->statistics_player_b[0]->goals;
+
+                if ($data->game->statistics_player_b[0]->goals > $data->game->statistics_player_a[0]->goals)
+                {
+                    $user_games_lost += 1;
+                }
+                elseif ($data->game->statistics_player_b[0]->goals != $data->game->statistics_player_a[0]->goals)
+                {
+                    $user_games_won += 1;
+                }
+            }
         }
+
+        $user_assesment =
+        (((((($user_games_won - $user_games_lost) / ($user_games_won + $user_games_lost)) / 2) +
+        ((($user_goals_count - $user_shotout_count) / ($user_goals_count + $user_shotout_count)) / 2))
+        * 100) + 100 ) / 2;
 
         // Averrage
         if ($user_games_count > 0){
           $user_goals_av = $user_goals_count / $user_games_count;
+          $user_shotout_av = $user_shotout_count / $user_games_count;
           $user_shot_av = $user_shot_count / $user_games_count;
           $user_shot_on_target_av = $user_shot_on_target_count / $user_games_count;
           $user_tackles_av = $user_tackles_count / $user_games_count;
@@ -108,8 +147,12 @@ class TournamentController extends Controller
 
         return view('user_statistics')
           ->with('user', $user)
+          ->with('user_assesment', $user_assesment)
           ->with('user_games_count', $user_games_count)
+          ->with('user_games_won', $user_games_won)
+          ->with('user_games_lost', $user_games_lost)
           ->with('user_goals_count', $user_goals_count)
+          ->with('user_shotout_count', $user_shotout_count)
           ->with('user_shot_count', $user_shot_count)
           ->with('user_shot_on_target_count', $user_shot_on_target_count)
           ->with('user_tackles_count', $user_tackles_count)
@@ -119,6 +162,7 @@ class TournamentController extends Controller
           ->with('user_yellow_cards_count', $user_yellow_cards_count)
           ->with('user_red_cards_count', $user_red_cards_count)
           ->with('user_goals_av', $user_goals_av)
+          ->with('user_shotout_av', $user_shotout_av)
           ->with('user_shot_av', $user_shot_av)
           ->with('user_shot_on_target_av', $user_shot_on_target_av)
           ->with('user_tackles_av', $user_tackles_av)

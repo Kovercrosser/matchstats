@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card bg-secondary text-white ">
+
+            <div class="card bg-secondary text-white my-2">
                 <div class="card-header">Tournament Overview</div>
 
                 <div class="card-body">
@@ -13,6 +14,7 @@
                   @else
                   <a href="/home/create" class="btn btn-primary">Create Tournament</a>
                   @endguest
+                  <a href="/statistic" class="btn btn-primary">Statistic</a>
                 </div>
             </div>
 

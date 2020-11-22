@@ -75,6 +75,11 @@ class GameController extends Controller
         ]);
         $game->save();
 
+        $statistic_a->game_id = $game->id;
+        $statistic_b->game_id = $game->id;
+        $statistic_a->save();
+        $statistic_b->save();
+
         return redirect('/home/'.$id);
     }
 }
