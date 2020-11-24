@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Tournament as Tournament;
 use App\Models\Game as Game;
 use App\Models\User as User;
+use App\Models\Statistic as Statistic;
 use \DateTime;
 use \DateInterval;
 
@@ -37,47 +38,50 @@ class StatisticsController extends Controller
         "user_games_lost" => 0,
       );
 
-      $all_statistics = $user->statistics->where('created_at', '>=', $sinceDate)->where('created_at', '<', $toDate);
+      $all_statistics = \DB::table("games")->select(
+                              "s1.user_id as a_user_id",
+                              "s1.goals as a_user_goals",
+                              "s2.user_id as b_user_id",
+                              "s2.goals as b_user_goals",
+                              "games.created_at")
+                            ->leftJoin("statistics as s1", "games.player_a_id", "s1.user_id")
+                            ->leftJoin("statistics as s2", "games.player_b_id", "s2.user_id")
+                            ->where("games.created_at", ">=", $sinceDate)
+                            ->where("games.created_at", "<", $toDate)
+                            ->get();
+      //$all_statistics = $user->statistics->where('created_at', '>=', $sinceDate)->where('created_at', '<', $toDate)->get();
 
       foreach ($all_statistics as $data)
       {
-          /*
-          $result["user_shot_on_target_count"] += $data->shots_on_target;
-          $result["user_tackles_count"] += $data->tackles;
-          $result["user_fouls_count"] += $data->fouls;
-          $result["user_offsides_count"] += $data->offsides;
-          $result["user_corners_count"] += $data->corners;
-          $result["user_yellow_cards_count"] += $data->yellow_cards;
-          $result["user_red_cards_count"] += $data->red_cards;
-          */
-
-          $result["user_goals_count"] += $data->goals;
-          $result["user_shot_count"] += $data->shots;
-          if ($data->game->statistics_player_a[0]->user_id != $user->id)
+          if ($data->a_user_id == $id)
           {
-              $result["user_shotout_count"] += $data->game->statistics_player_a[0]->goals;
-
-              if ($data->game->statistics_player_a[0]->goals > $data->game->statistics_player_b[0]->goals)
+              $result["user_goals_count"] += $data->a_user_goals;
+              $result["user_shotout_count"] += $data->b_user_goals;
+              if ($data->a_user_goals > $data->b_user_goals)
+              {
+                  $result["user_games_won"] += 1;
+              }
+              elseif ($data->a_user_goals < $data->b_user_goals)
               {
                   $result["user_games_lost"] += 1;
               }
-              elseif ($data->game->statistics_player_a[0]->goals != $data->game->statistics_player_b[0]->goals)
+          }
+          elseif ($data->b_user_id == $id)
+          {
+              $result["user_goals_count"] += $data->b_user_goals;
+              $result["user_shotout_count"] += $data->a_user_goals;
+              if ($data->a_user_goals > $data->b_user_goals)
+              {
+                  $result["user_games_lost"] += 1;
+              }
+              elseif ($data->a_user_goals < $data->b_user_goals)
               {
                   $result["user_games_won"] += 1;
               }
           }
-
-          if ($data->game->statistics_player_b[0]->user_id != $user->id) {
-              $result["user_shotout_count"] += $data->game->statistics_player_b[0]->goals;
-
-              if ($data->game->statistics_player_b[0]->goals > $data->game->statistics_player_a[0]->goals)
-              {
-                  $result["user_games_lost"] += 1;
-              }
-              elseif ($data->game->statistics_player_b[0]->goals != $data->game->statistics_player_a[0]->goals)
-              {
-                  $result["user_games_won"] += 1;
-              }
+          else
+          {
+            // Not a game with current user
           }
       }
 
