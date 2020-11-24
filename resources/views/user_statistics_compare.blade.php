@@ -84,8 +84,8 @@
             {
               data: [
                 @foreach ($user1 as $data)
-                  @if (isset($data["user_assesment"]))
-                    {{ $data["user_assesment"] }},
+                  @if (isset($data["value"]))
+                    {{ $data["value"] }},
                   @endif
                 @endforeach
               ],
