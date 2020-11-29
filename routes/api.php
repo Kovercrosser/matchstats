@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('user/{user_id}/statistic', 'App\Http\Controllers\TournamentController@api_user_statistics')->where('id', '[0-9]+');
