@@ -38,7 +38,7 @@
                   Spiel Durchschnitt
                 </div>
                 <div class="card-body">
-                  Tore: {{ $user_goals_av }}<br>
+                  Tore: {{ round($user_goals_av, 2) }}<br>
                   Schüsse: {{ round($user_shot_av, 2) }}<br>
                   Schüsse aufs Tor: {{ round($user_shot_on_target_av, 2) }}<br>
                   Zweikämpfe: {{ round($user_tackles_av, 2) }}<br>
@@ -57,14 +57,15 @@
                   Best of
                 </div>
                 <div class="card-body">
-                    Tore
-                    Schüsse
-                    Zweikämpfe
-                    Fouls
-                    Abseits
-                    Ecken
-                    Gelbe Karten
-                    Rote Karten
+                    Tore:  {{ $user_goals_high }}<br>
+                    Schüsse:  {{ $user_shot_high }}<br>
+                    Schüsse aufs Tor: {{ $user_shot_on_target_high }}<br>
+                    Zweikämpfe:  {{ $user_tackles_high }}<br>
+                    Fouls:  {{ $user_fouls_high }}<br>
+                    Abseits:  {{ $user_offsides_high }}<br>
+                    Ecken:  {{ $user_corners_high }}<br>
+                    Gelbe Karten:  {{ $user_yellow_cards_high }}<br>
+                    Rote Karten:  {{ $user_red_cards_high }}<br>
                 </div>
             </div>
         </div>

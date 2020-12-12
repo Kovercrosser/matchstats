@@ -73,8 +73,20 @@ class TournamentController extends Controller
         $user_games_won = 0;
         $user_games_lost = 0;
 
+        // Alltime High
+        $user_goals_high = 0;
+        $user_shot_high = 0;
+        $user_shot_on_target_high = 0;
+        $user_tackles_high = 0;
+        $user_fouls_high = 0;
+        $user_offsides_high = 0;
+        $user_corners_high = 0;
+        $user_yellow_cards_high = 0;
+        $user_red_cards_high = 0;
+
         foreach ($user->statistics as $data)
         {
+          // Alltime
             $user_goals_count += $data->goals;
             $user_shot_count += $data->shots;
             $user_shot_on_target_count += $data->shots_on_target;
@@ -85,6 +97,37 @@ class TournamentController extends Controller
             $user_yellow_cards_count += $data->yellow_cards;
             $user_red_cards_count += $data->red_cards;
 
+
+          //Alltime High
+          If ($data->goals > $user_goals_high ) {
+            $user_goals_high = $data->goals;
+          }
+          If ($data->shots > $user_shot_high ) {
+            $user_shot_high = $data->shots;
+          }
+          If ($data->shots_on_target > $user_shot_on_target_high ) {
+            $user_shot_on_target_high = $data->shots_on_target;
+          }
+          If ($data->tackles > $user_tackles_high ) {
+            $user_tackles_high = $data->tackles;
+          }
+          If ($data->fouls > $user_fouls_high ) {
+            $user_fouls_high = $data->fouls;
+          }
+          If ($data->offsides > $user_offsides_high ) {
+            $user_offsides_high = $data->offsides;
+          }
+          If ($data->corners > $user_corners_high ) {
+            $user_corners_high = $data->corners;
+          }
+          If ($data->yellow_cards > $user_yellow_cards_high ) {
+            $user_yellow_cards_high = $data->yellow_cards;
+          }
+          If ($data->red_cards > $user_red_cards_high ) {
+            $user_red_cards_high = $data->red_cards;
+          }
+
+            
             // Get all Shotout Goals
 
 
@@ -149,6 +192,9 @@ class TournamentController extends Controller
           $user_red_cards_av = 0;
         }
 
+
+     
+
         return view('user_statistics')
           ->with('user', $user)
           ->with('user_assesment', $user_assesment)
@@ -165,6 +211,7 @@ class TournamentController extends Controller
           ->with('user_corners_count', $user_corners_count)
           ->with('user_yellow_cards_count', $user_yellow_cards_count)
           ->with('user_red_cards_count', $user_red_cards_count)
+          //average
           ->with('user_goals_av', $user_goals_av)
           ->with('user_shotout_av', $user_shotout_av)
           ->with('user_shot_av', $user_shot_av)
@@ -174,7 +221,17 @@ class TournamentController extends Controller
           ->with('user_offsides_av', $user_offsides_av)
           ->with('user_corners_av', $user_corners_av)
           ->with('user_yellow_cards_av', $user_yellow_cards_av)
-          ->with('user_red_cards_av', $user_red_cards_av);
+          ->with('user_red_cards_av', $user_red_cards_av)
+          //alltime High
+          ->with('user_goals_high', $user_goals_high)
+          ->with('user_shot_high', $user_shot_high)
+          ->with('user_shot_on_target_high', $user_shot_on_target_high)
+          ->with('user_tackles_high', $user_tackles_high)
+          ->with('user_fouls_high', $user_fouls_high)
+          ->with('user_offsides_high', $user_offsides_high)
+          ->with('user_corners_high', $user_corners_high)
+          ->with('user_yellow_cards_high', $user_yellow_cards_high)
+          ->with('user_red_cards_high', $user_red_cards_high);
     }
 
     public function api_user_statistics($id)
