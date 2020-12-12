@@ -214,47 +214,47 @@ class TournamentController extends Controller
         if ($user_goals_high_game_id == 0) {
           $user_goals_high_link = "";
          } else {
-          $user_goals_high_link = " >><a href=" . chr( 34 ) . "/game" . "/" . strval($user_goals_high_game_id) . chr( 34 ) . ">Zum Spiel</a><<";
+          $user_goals_high_link = " <a href=" . chr( 34 ) . "/game" . "/" . strval($user_goals_high_game_id) . chr( 34 ) . ">Zum Spiel</a>";
         }
         if ($user_shots_high_game_id == 0) {
           $user_shots_high_link = "";
          } else {
-          $user_shots_high_link = " >><a href=" . "/game" . "/" . strval($user_shots_high_game_id) . ">Zum Spiel</a><<";
+          $user_shots_high_link = " <a href=" . "/game" . "/" . strval($user_shots_high_game_id) . ">Zum Spiel</a>";
         }
         if ($user_shot_on_target_high_game_id == 0) {
           $user_shot_on_target_high_link = "";
          } else {
-          $user_shot_on_target_high_link = " >><a href=" . "/game" . "/" . strval($user_shot_on_target_high_game_id) . ">Zum Spiel</a><<";
+          $user_shot_on_target_high_link = " <a href=" . "/game" . "/" . strval($user_shot_on_target_high_game_id) . ">Zum Spiel</a>";
         }
         if ($user_tackles_high_game_id == 0) {
           $user_tackles_high_link = "";
          } else {
-          $user_tackles_high_link = " >><a href=" . "/game" . "/" . strval($user_tackles_high_game_id) . ">Zum Spiel</a><<";
+          $user_tackles_high_link = " <a href=" . "/game" . "/" . strval($user_tackles_high_game_id) . ">Zum Spiel</a>";
         }
         if ($user_fouls_high_game_id == 0) {
           $user_fouls_high_link = "";
          } else {
-          $user_fouls_high_link = " >><a href=" . "/game" . "/" . strval($user_fouls_high_game_id) . ">Zum Spiel</a><<";
+          $user_fouls_high_link = " <a href=" . "/game" . "/" . strval($user_fouls_high_game_id) . ">Zum Spiel</a>";
         }
         if ($user_offsides_high_game_id == 0) {
           $user_offsides_high_link = "";
          } else {
-          $user_offsides_high_link = " >><a href=" . "/game" . "/" . strval($user_offsides_high_game_id) . ">Zum Spiel</a><<";
+          $user_offsides_high_link = " <a href=" . "/game" . "/" . strval($user_offsides_high_game_id) . ">Zum Spiel</a>";
         }
         if ($user_corners_high_game_id == 0) {
           $user_corners_high_link = "";
          } else {
-          $user_corners_high_link = " >><a href=" . "/game" . "/" . strval($user_corners_high_game_id) . ">Zum Spiel</a><<";
+          $user_corners_high_link = " <a href=" . "/game" . "/" . strval($user_corners_high_game_id) . ">Zum Spiel</a>";
         }
         if ($user_yellow_cards_high_game_id == 0) {
           $user_yellow_cards_high_link = "";
          } else {
-          $user_yellow_cards_high_link = " >><a href=" . "/game" . "/" . strval($user_yellow_cards_high_game_id) . ">Zum Spiel</a><<";
+          $user_yellow_cards_high_link = " <a href=" . "/game" . "/" . strval($user_yellow_cards_high_game_id) . ">Zum Spiel</a>";
         }
         if ($user_red_cards_high_game_id == 0) {
           $user_red_cards_high_link = "";
          } else {
-          $user_red_cards_high_link = " >><a href=" . "/game" . "/" . strval($user_red_cards_high_game_id) . ">Zum Spiel</a><<";
+          $user_red_cards_high_link = " <a href=" . "/game" . "/" . strval($user_red_cards_high_game_id) . ">Zum Spiel</a>";
         }
       
         
