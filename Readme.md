@@ -1,3 +1,6 @@
+### Prerequisite
+PHP v.7.3
+
 ### Setup
 Setup an Database connection in the ".env" file
 
@@ -5,9 +8,9 @@ Run:
 
 `composer install`
 
-`npm install`
-
 `php artisan key:generate` generate  
+
+--> Only for Development `npm install`
 
 --> Only for Development `npm run watch` to create to compile js/css documents
 
