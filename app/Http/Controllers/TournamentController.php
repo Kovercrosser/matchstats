@@ -72,10 +72,9 @@ class TournamentController extends Controller
         $user_red_cards_count = 0;
         $user_games_won = 0;
         $user_games_lost = 0;
-
         // Alltime High
         $user_goals_high = 0;
-        $user_shot_high = 0;
+        $user_shots_high = 0;
         $user_shot_on_target_high = 0;
         $user_tackles_high = 0;
         $user_fouls_high = 0;
@@ -83,6 +82,16 @@ class TournamentController extends Controller
         $user_corners_high = 0;
         $user_yellow_cards_high = 0;
         $user_red_cards_high = 0;
+        //Alltime High Game_ID
+        $user_goals_high_game_id = 0;
+        $user_shots_high_game_id = 0;
+        $user_shot_on_target_high_game_id = 0;
+        $user_tackles_high_game_id = 0;
+        $user_fouls_high_game_id = 0;
+        $user_offsides_high_game_id = 0;
+        $user_corners_high_game_id = 0;
+        $user_yellow_cards_high_game_id = 0;
+        $user_red_cards_high_game_id = 0;
 
         foreach ($user->statistics as $data)
         {
@@ -101,30 +110,39 @@ class TournamentController extends Controller
           //Alltime High
           If ($data->goals > $user_goals_high ) {
             $user_goals_high = $data->goals;
+            $user_goals_high_game_id = $data->game_id;
           }
-          If ($data->shots > $user_shot_high ) {
-            $user_shot_high = $data->shots;
+          If ($data->shots > $user_shots_high ) {
+            $user_shots_high = $data->shots;
+            $user_shots_high_game_id = $data->game_id;
           }
           If ($data->shots_on_target > $user_shot_on_target_high ) {
             $user_shot_on_target_high = $data->shots_on_target;
+            $user_shot_on_target_high_game_id = $data->game_id;
           }
           If ($data->tackles > $user_tackles_high ) {
             $user_tackles_high = $data->tackles;
+            $user_tackles_high_game_id = $data->game_id;
           }
           If ($data->fouls > $user_fouls_high ) {
             $user_fouls_high = $data->fouls;
+            $user_fouls_high_game_id = $data->game_id;
           }
           If ($data->offsides > $user_offsides_high ) {
             $user_offsides_high = $data->offsides;
+            $user_offsides_high_game_id = $data->game_id;
           }
           If ($data->corners > $user_corners_high ) {
             $user_corners_high = $data->corners;
+            $user_corners_high_game_id = $data->game_id;
           }
           If ($data->yellow_cards > $user_yellow_cards_high ) {
             $user_yellow_cards_high = $data->yellow_cards;
+            $user_yellow_cards_high_game_id = $data->game_id;
           }
           If ($data->red_cards > $user_red_cards_high ) {
             $user_red_cards_high = $data->red_cards;
+            $user_red_cards_high_game_id = $data->game_id;
           }
 
             
@@ -192,6 +210,55 @@ class TournamentController extends Controller
           $user_red_cards_av = 0;
         }
 
+        //Make Links for Alltime High
+        if ($user_goals_high_game_id == 0) {
+          $user_goals_high_link = "";
+         } else {
+          $user_goals_high_link = " >><a href=" . chr( 34 ) . "/game" . "/" . strval($user_goals_high_game_id) . chr( 34 ) . ">Zum Spiel</a><<";
+        }
+        if ($user_shots_high_game_id == 0) {
+          $user_shots_high_link = "";
+         } else {
+          $user_shots_high_link = " >><a href=" . "/game" . "/" . strval($user_shots_high_game_id) . ">Zum Spiel</a><<";
+        }
+        if ($user_shot_on_target_high_game_id == 0) {
+          $user_shot_on_target_high_link = "";
+         } else {
+          $user_shot_on_target_high_link = " >><a href=" . "/game" . "/" . strval($user_shot_on_target_high_game_id) . ">Zum Spiel</a><<";
+        }
+        if ($user_tackles_high_game_id == 0) {
+          $user_tackles_high_link = "";
+         } else {
+          $user_tackles_high_link = " >><a href=" . "/game" . "/" . strval($user_tackles_high_game_id) . ">Zum Spiel</a><<";
+        }
+        if ($user_fouls_high_game_id == 0) {
+          $user_fouls_high_link = "";
+         } else {
+          $user_fouls_high_link = " >><a href=" . "/game" . "/" . strval($user_fouls_high_game_id) . ">Zum Spiel</a><<";
+        }
+        if ($user_offsides_high_game_id == 0) {
+          $user_offsides_high_link = "";
+         } else {
+          $user_offsides_high_link = " >><a href=" . "/game" . "/" . strval($user_offsides_high_game_id) . ">Zum Spiel</a><<";
+        }
+        if ($user_corners_high_game_id == 0) {
+          $user_corners_high_link = "";
+         } else {
+          $user_corners_high_link = " >><a href=" . "/game" . "/" . strval($user_corners_high_game_id) . ">Zum Spiel</a><<";
+        }
+        if ($user_yellow_cards_high_game_id == 0) {
+          $user_yellow_cards_high_link = "";
+         } else {
+          $user_yellow_cards_high_link = " >><a href=" . "/game" . "/" . strval($user_yellow_cards_high_game_id) . ">Zum Spiel</a><<";
+        }
+        if ($user_red_cards_high_game_id == 0) {
+          $user_red_cards_high_link = "";
+         } else {
+          $user_red_cards_high_link = " >><a href=" . "/game" . "/" . strval($user_red_cards_high_game_id) . ">Zum Spiel</a><<";
+        }
+      
+        
+
 
      
 
@@ -224,14 +291,24 @@ class TournamentController extends Controller
           ->with('user_red_cards_av', $user_red_cards_av)
           //alltime High
           ->with('user_goals_high', $user_goals_high)
-          ->with('user_shot_high', $user_shot_high)
+          ->with('user_shots_high', $user_shots_high)
           ->with('user_shot_on_target_high', $user_shot_on_target_high)
           ->with('user_tackles_high', $user_tackles_high)
           ->with('user_fouls_high', $user_fouls_high)
           ->with('user_offsides_high', $user_offsides_high)
           ->with('user_corners_high', $user_corners_high)
           ->with('user_yellow_cards_high', $user_yellow_cards_high)
-          ->with('user_red_cards_high', $user_red_cards_high);
+          ->with('user_red_cards_high', $user_red_cards_high)
+          //alltime High Links
+          ->with('user_goals_high_link', $user_goals_high_link)
+          ->with('user_shots_high_link',$user_shots_high_link)
+          ->with('user_shot_on_target_high_link',$user_shot_on_target_high_link)
+          ->with('user_tackles_high_link',$user_tackles_high_link)
+          ->with('user_fouls_high_link',$user_fouls_high_link)
+          ->with('user_offsides_high_link',$user_offsides_high_link)
+          ->with('user_corners_high_link',$user_corners_high_link)
+          ->with('user_yellow_cards_high_link',$user_yellow_cards_high_link)
+          ->with('user_red_cards_high_link',$user_red_cards_high_link);
     }
 
     public function api_user_statistics($id)

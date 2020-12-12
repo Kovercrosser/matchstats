@@ -57,15 +57,15 @@
                   Best of
                 </div>
                 <div class="card-body">
-                    Tore:  {{ $user_goals_high }}<br>
-                    Schüsse:  {{ $user_shot_high }}<br>
-                    Schüsse aufs Tor: {{ $user_shot_on_target_high }}<br>
-                    Zweikämpfe:  {{ $user_tackles_high }}<br>
-                    Fouls:  {{ $user_fouls_high }}<br>
-                    Abseits:  {{ $user_offsides_high }}<br>
-                    Ecken:  {{ $user_corners_high }}<br>
-                    Gelbe Karten:  {{ $user_yellow_cards_high }}<br>
-                    Rote Karten:  {{ $user_red_cards_high }}<br>
+                    Tore:  {{ $user_goals_high }}{!!$user_goals_high_link!!}<br>
+                    Schüsse:  {{ $user_shots_high }}{!!$user_shots_high_link!!}<br>
+                    Schüsse aufs Tor: {{ $user_shot_on_target_high }}{!!$user_shot_on_target_high_link!!}<br>
+                    Zweikämpfe:  {{ $user_tackles_high }}{!!$user_tackles_high_link!!}<br>
+                    Fouls:  {{ $user_fouls_high }}{!!$user_fouls_high_link!!}<br>
+                    Abseits:  {{ $user_offsides_high }}{!!$user_offsides_high_link!!}<br>
+                    Ecken:  {{ $user_corners_high }}{!!$user_corners_high_link!!}<br>
+                    Gelbe Karten:  {{ $user_yellow_cards_high }}{!!$user_yellow_cards_high_link!!}<br>
+                    Rote Karten:  {{ $user_red_cards_high }}{!!$user_red_cards_high_link!!}<br>
                 </div>
             </div>
         </div>
