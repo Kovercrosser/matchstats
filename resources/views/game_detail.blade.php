@@ -88,7 +88,36 @@
                     Game End: {{ $game->statistics_player_a[0]->gameend($game->statistics_player_b[0]->game_end) }}
                 </div>
             </div>
+
+            <div class="card my-4 border-danger">
+                <div class="card-header">
+                  Edit or Delete
+                </div>
+                <div class="card-body">
+                <button type="button" class="btn btn-primary">Edit Game</button>
+                <button type="button" data-toggle="modal" data-target="#deleteModal"class="btn btn-danger">Delete Game</button>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
+<!-- deleteModal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Deleting</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">X</button>
+        </div>
+      <div class="modal-body">
+        Do you really want to delete this game?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection
