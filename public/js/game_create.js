@@ -29,3 +29,15 @@ pos_b.addEventListener('change', function call_update_b(){
     update_possession(pos_b);
 });
 
+
+function validateForm() {
+    if (document.forms["game_submit"]["user_id_a"].value == document.forms["game_submit"]["user_id_b"].value) {
+        alert("Es wurde zweimal der gleiche Spieler ausgewählt! Bitte wähle unterschiedliche Spieler aus!");
+        return false;
+    }
+    if (document.forms["game_submit"]["team_a"].value == document.forms["game_submit"]["team_b"].value) {
+        alert("Es wurde zweimal das gleiche Team ausgewählt! Bitte wähle unterschiedliche Teams aus!");
+        return false;
+    }
+  }
+

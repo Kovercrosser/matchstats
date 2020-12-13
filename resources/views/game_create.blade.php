@@ -6,7 +6,7 @@
 
 <div class="container">
   <div class="row">
-    <form method="POST" action="/home/{{ $tournament->id }}/create">
+    <form method="POST" action="/home/{{ $tournament->id }}/create"  name="game_submit" onsubmit="return validateForm()" >
       {{ csrf_field() }}
         <div class="col-md-12">
             <div class="card">
@@ -181,7 +181,7 @@
                         <div class="form-group">
                           <label for="possession_b">Possession in %</label>
                           <input type="number" id="possession_b" name="possession_b" class="form-control"
-                              value="0" max="100" min="0" required>
+                              value="100" max="100" min="0" required>
                         </div>
                       </div>
 
