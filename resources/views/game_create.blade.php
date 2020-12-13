@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
 <div class="container">
   <div class="row">
     <form method="POST" action="/home/{{ $tournament->id }}/create">
@@ -53,9 +56,9 @@
 
                       <div class="col-md-6 col-12">
                         <div class="form-group">
-                          <label for="possession_a">Possession</label>
+                          <label for="possession_a">Possession in %</label>
                           <input type="number" id="possession_a" name="possession_a" class="form-control"
-                              value="0" required>
+                              value="0" max="100" min="0" required>
                         </div>
                       </div>
 
@@ -176,9 +179,9 @@
 
                       <div class="col-md-6 col-12">
                         <div class="form-group">
-                          <label for="possession_b">Possession</label>
+                          <label for="possession_b">Possession in %</label>
                           <input type="number" id="possession_b" name="possession_b" class="form-control"
-                              value="0" required>
+                              value="0" max="100" min="0" required>
                         </div>
                       </div>
 
@@ -275,4 +278,5 @@
     </div>
   </div>
 </div>
+<script src="{{ asset('js/game_create.js') }}"></script>
 @endsection
