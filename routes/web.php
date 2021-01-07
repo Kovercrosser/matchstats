@@ -31,3 +31,5 @@ Route::get('/game/{id}', 'App\Http\Controllers\GameController@detail')->where('i
 Route::get('/user/{id}', 'App\Http\Controllers\TournamentController@user_statistics')->where('id', '[0-9]+');
 
 Route::get('/statistic', 'App\Http\Controllers\StatisticsController@index');
+
+Route::get('/game/delete/{id}', 'App\Http\Controllers\GameController@delete')->where('id', '[0-9]+');

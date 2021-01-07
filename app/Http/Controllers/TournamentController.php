@@ -311,6 +311,8 @@ class TournamentController extends Controller
           ->with('user_red_cards_high_link',$user_red_cards_high_link);
     }
 
+
+
     public function api_user_statistics($id)
     {
         $user = User::findOrFail($id);

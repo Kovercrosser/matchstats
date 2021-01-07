@@ -7,6 +7,7 @@ use App\Models\User as User;
 use App\Models\Statistic as Statistic;
 use App\Models\Tournament as Tournament;
 use App\Models\Game as Game;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 
 class GameController extends Controller
 {
@@ -82,4 +83,30 @@ class GameController extends Controller
 
         return redirect('/home/'.$id);
     }
+
+    public function delete($id) {
+      $data=Game::find($id);
+      $playerastatisticsid = $data->player_a_id;
+      $playerbstatisticsid = $data->player_b_id;
+
+      $dataa = Statistic::find($playerastatisticsid);
+      $datab = Statistic::find($playerbstatisticsid);
+
+      $dataa->delete();
+      $datab->delete();
+
+      //$data->delete();
+      return redirect('/home');
+
+      //$test = Game::destroy($id);
+
+      //$game = Game::findOrFail($id);
+      //$game->player_a_id->delete();
+      //$game->player_b_id->delete();
+      //$game->delete();
+      
+     // $game = Game::destroy($id);
+    }
+
+   
 }
